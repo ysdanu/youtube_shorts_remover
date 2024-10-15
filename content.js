@@ -1,62 +1,48 @@
 // content.js
 
-// Function to remove YouTube Shorts elements
 function removeYouTubeShorts() {
-    // Remove the Shorts button from the sidebar menu
-    // The sidebar menu items are 'a' elements with a title attribute
+    // 1. Remove the Shorts button from the sidebar menu
     let shortsSidebarButton = document.querySelector('a[title="Shorts"]');
     if (shortsSidebarButton) {
-        // Hide the parent element to remove it from the sidebar
         shortsSidebarButton.parentElement.style.display = 'none';
     }
 
-    // Remove the Shorts section from the home page
-    // Find all sections that could be Shorts sections
-    let shortsSections = document.querySelectorAll('ytd-rich-section-renderer, ytm-rich-shelf-renderer');
-    shortsSections.forEach(function(section) {
-        // Get the title of the section (works for both desktop and mobile)
-        let titleElement = section.querySelector('yt-formatted-string#title, span#title');
+    // 2. Remove the Shorts section from the home page and search results
+    let shortsSections = document.querySelectorAll('ytd-rich-section-renderer, ytm-rich-shelf-renderer, ytd-reel-shelf-renderer');
+    shortsSections.forEach(function (section) {
+        let titleElement = section.querySelector('yt-formatted-string#title, span#title, div#title-container #title');
         if (titleElement && titleElement.innerText.includes('Shorts')) {
-            // Hide the Shorts section
             section.style.display = 'none';
         }
     });
 
-    // Remove individual Shorts videos from the feed
-    // Shorts videos have thumbnails that link to URLs containing '/shorts/'
+    // 3. Remove individual Shorts videos from the feed
     let shortsThumbnails = document.querySelectorAll('ytd-thumbnail a[href*="/shorts/"], a[href*="/shorts/"]');
-    shortsThumbnails.forEach(function(thumbnail) {
-        // Find the parent element representing the video item (covers desktop and mobile)
-        let parent = thumbnail.closest('ytd-rich-item-renderer, ytd-video-renderer, ytm-compact-video-renderer, ytm-rich-item-renderer, ytm-rich-shelf-renderer, ytm-shorts-lockup-view-model');
+    shortsThumbnails.forEach(function (thumbnail) {
+        let parent = thumbnail.closest('ytd-rich-item-renderer, ytd-video-renderer, ytm-compact-video-renderer, ytm-rich-item-renderer, ytm-rich-shelf-renderer, ytm-shorts-lockup-view-model, ytd-reel-item-renderer');
         if (parent) {
-            // Hide the entire video item
             parent.style.display = 'none';
         }
     });
 
-    // Remove Shorts tab from channel pages
-    // The Shorts tab is now a 'yt-tab-shape' element with a 'tab-title' of 'Shorts'
+    // 4. Remove Shorts tab from channel pages
     let shortsTab = document.querySelector('yt-tab-shape[tab-title="Shorts"]');
     if (shortsTab) {
-        // Hide the Shorts tab
         shortsTab.style.display = 'none';
     }
 
-    // Remove Shorts from the channel's videos page
-    // On the videos page, Shorts might appear with a badge indicating 'Shorts'
+    // 5. Remove Shorts from the channel's videos page
     let shortsBadges = document.querySelectorAll('ytd-badge-supported-renderer[icon="SHORTS"]');
-    shortsBadges.forEach(function(badge) {
-        // Hide the entire video item containing the Shorts badge
+    shortsBadges.forEach(function (badge) {
         let parent = badge.closest('ytd-grid-video-renderer, ytd-video-renderer');
         if (parent) {
             parent.style.display = 'none';
         }
     });
 
-    // Remove any 'ytm-shorts-lockup-view-model' elements (specific to mobile)
-    let mobileShortsElements = document.querySelectorAll('ytm-shorts-lockup-view-model');
-    mobileShortsElements.forEach(function(element) {
-        // Hide the Shorts lockup elements on mobile
+    // 6. Remove mobile-specific Shorts elements
+    let mobileShortsElements = document.querySelectorAll('ytm-shorts-lockup-view-model, ytm-shorts-lockup-view-model-v2');
+    mobileShortsElements.forEach(function (element) {
         element.style.display = 'none';
     });
 }
@@ -64,12 +50,10 @@ function removeYouTubeShorts() {
 // Run the function on page load
 removeYouTubeShorts();
 
-// Since YouTube dynamically loads content, we need to observe changes in the DOM
-// Create a MutationObserver to watch for changes and run our function again
-const observer = new MutationObserver(function(mutations, observer) {
-    // Run our function to remove Shorts elements whenever the DOM changes
+// Observe changes in the DOM to catch dynamically loaded content
+const observer = new MutationObserver(function (mutations, observer) {
     removeYouTubeShorts();
 });
 
-// Start observing the document body for added or removed child elements
+// Start observing the document body
 observer.observe(document.body, { childList: true, subtree: true });
