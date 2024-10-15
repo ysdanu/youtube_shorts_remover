@@ -17,3 +17,9 @@ This Chrome extension removes YouTube Shorts entirely from Chromium-based browse
 - Excludes Shorts from search results.
 - Removes the Shorts chip from search result filters.
 - Disables the Shorts queue when accessing direct links.
+
+#### License
+
+This extension is released under the MIT license.
+
+<a href="https://www.flaticon.com/free-icons/youtube" title="youtube icons">Youtube icons created by Md Tanvirul Haque - Flaticon</a>
