@@ -1,4 +1,4 @@
-### youtube_shorts_remover
+### Youtube shorts remover
 
 This extension removes shorts from youtube home page as well as youtube channel page.
 To use clone this repo:
