@@ -1,6 +1,6 @@
 ## YouTube Shorts Remover
 
-This Chrome extension removes YouTube Shorts entirely from Chromium-based browsers, providing a cleaner browsing experience.
+This Chrome extension removes YouTube Shorts entirely from Chromium-based browsers, providing distraction free youtube experience.
 
 #### How to Install
 
