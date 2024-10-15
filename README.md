@@ -1,6 +1,17 @@
 ### Youtube shorts remover
+"This extension removes Shorts completely from chromium based browser"
 
-This extension removes shorts from youtube home page as well as youtube channel page.
-To use clone this repo:
-- go to chrome extensions and enable developer mode
-- select load unpacked and refresh/open youtube.
+How to Install:
+clone the repo and extract files.
+Go to chrome://extensions/
+Enable "Developer Mode"
+Click "Load unpacked" and select the folder.
+Open/Refresh YouTube
+
+
+Features: 
+Removes shorts from homepage sidebar
+Removes shorts on channel homepage
+Removes shorts in search results
+Removes shorts chip from search result filters
+Removes shorts queue if direct link to a short is openend.
