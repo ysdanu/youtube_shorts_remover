@@ -35,8 +35,8 @@ function removeYouTubeShorts() {
     });
 
     // Remove Shorts tab from channel pages
-    // The Shorts tab is a 'tp-yt-paper-tab' element with an aria-label of 'Shorts'
-    let shortsTab = document.querySelector('tp-yt-paper-tab[aria-label="Shorts"]');
+    // The Shorts tab is now a 'yt-tab-shape' element with a 'tab-title' of 'Shorts'
+    let shortsTab = document.querySelector('yt-tab-shape[tab-title="Shorts"]');
     if (shortsTab) {
         // Hide the Shorts tab
         shortsTab.style.display = 'none';
