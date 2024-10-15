@@ -1,0 +1,15 @@
+{
+    "manifest_version": 3,
+    "name": "Remove YouTube Shorts",
+    "version": "1.0",
+    "description": "Removes YouTube Shorts buttons and banners from YouTube pages.",
+    "permissions": ["activeTab"],
+    "content_scripts": [
+      {
+        "matches": ["*://www.youtube.com/*"],
+        "js": ["content.js"]
+      }
+    ]
+  }
+  
+
