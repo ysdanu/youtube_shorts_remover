@@ -1,7 +1,17 @@
 // content.js
 
-// Function to remove YouTube Shorts elements
+// Function to remove YouTube Shorts elements and handle Shorts URLs
 function removeYouTubeShorts() {
+    // Redirect Shorts URLs to the standard video URL
+    if (window.location.pathname.startsWith('/shorts/')) {
+        let videoId = window.location.pathname.split('/shorts/')[1];
+        if (videoId) {
+            // Redirect to the standard watch page
+            window.location.replace(`https://www.youtube.com/watch?v=${videoId}`);
+            return; // Exit the function to prevent further execution
+        }
+    }
+
     // Remove the Shorts button from the sidebar menu
     let shortsSidebarButton = document.querySelector('a[title="Shorts"]');
     if (shortsSidebarButton) {
