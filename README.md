@@ -1,4 +1,4 @@
-## YouTube Shorts Remover
+## YouTube without Shorts
 
 This Chrome extension removes YouTube Shorts entirely from Chromium-based browsers, providing distraction free youtube experience.
 
